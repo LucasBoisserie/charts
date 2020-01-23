@@ -49,6 +49,7 @@ defaultRules:
   runbookUrl: https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook.md#
   ## Reduce app namespace alert scope
   appNamespacesTarget: ".*"
+  appCustomFiltersTarget: ""
 
   ## Labels for default rules
   labels: {}

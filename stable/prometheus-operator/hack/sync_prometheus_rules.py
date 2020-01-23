@@ -110,6 +110,14 @@ replacement_map = {
         'replacement': '{{ .Values.defaultRules.runbookUrl }}',
         'init': ''},
     'job="kube-state-metrics"': {
+        'replacement': 'job="kube-state-metrics", {{ $customFilters }}',
+        'limitGroup': ['kubernetes-apps'],
+        'init': '{{- $customFilters := .Values.defaultRules.appCustomFiltersTarget }}'},
+    'job="kubelet"': {
+        'replacement': 'job="kubelet", {{ $customFilters }}',
+        'limitGroup': ['kubernetes-storage'],
+        'init': '{{- $customFilters := .Values.defaultRules.appCustomFiltersTarget }}'},
+    'job="kube-state-metrics"': {
         'replacement': 'job="kube-state-metrics", namespace=~"{{ $targetNamespace }}"',
         'limitGroup': ['kubernetes-apps'],
         'init': '{{- $targetNamespace := .Values.defaultRules.appNamespacesTarget }}'},
